@@ -32,7 +32,8 @@ const RepositoryItem: React.FC<any> = ({
         
         <Button
           className="RepositoryItem-title-action"
-          onClick={() => viewerHasStarred ? removeStar({ variables: { id } }) : addStar({ variables: { id } })}
+          onClick={() => viewerHasStarred ?
+            removeStar({ variables: { id } }) : addStar({ variables: { id } })}
         >
           {stargazers.totalCount} Stars
         </Button>
