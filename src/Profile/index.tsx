@@ -8,10 +8,7 @@ import ErrorMessage from '../Error/ErrorMessage';
 const GET_REPOSITORIES_OF_CURRENT_USER = gql`
   {
     viewer {
-      repositories(
-        first: 5
-        orderBy: { direction: DESC, field: STARGAZERS }
-      ) {
+      repositories(first: 5, orderBy: { direction: DESC, field: STARGAZERS }) {
         edges {
           node {
             id
@@ -44,15 +41,13 @@ const Profile = () => {
   const { data, loading, error } = useQuery(GET_REPOSITORIES_OF_CURRENT_USER);
 
   // eslint-disable-next-line no-console
-  console.log('data: ', data);
+  console.log("query's data: ", data);
 
-  if (error) return <ErrorMessage error={error} />
+  if (error) return <ErrorMessage error={error} />;
 
   if (loading || !data.viewer) return <Loading />;
 
-  return (
-    <RepositoryList repositories={data.viewer.repositories} />
-  );
+  return <RepositoryList repositories={data.viewer.repositories} />;
 };
 
 export default Profile;

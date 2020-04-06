@@ -19,17 +19,19 @@ const httpLink = createHttpLink({
   },
 });
 
-const errorLink = onError(({graphQLErrors, networkError}: ErrorResponse) => {
-  if (graphQLErrors) {}
-  
-  if(networkError) {}
+const errorLink = onError(({ graphQLErrors, networkError }: ErrorResponse) => {
+  if (graphQLErrors) {
+  }
+
+  if (networkError) {
+  }
 });
 
 const link = ApolloLink.from([errorLink, httpLink]);
 
 const client = new ApolloClient({
   link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
@@ -37,8 +39,7 @@ ReactDOM.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </ApolloProvider>
-  ,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
